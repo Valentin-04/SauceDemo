@@ -21,7 +21,7 @@ public class AuthorizationTest {
         browser.findElement(By.id("password")).sendKeys("secret_sauce");
         browser.findElement(By.id("login-button")).click();
 
-        if (username.contains("locked")){
+        if (username.contains("locked")) {
             result = browser.findElement(By.xpath("//h3[@data-test='error']")).getText();
             System.out.println(result);
             assertEquals(result, "Epic sadface: Sorry, this user has been locked out.");

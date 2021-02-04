@@ -48,7 +48,6 @@ public class RandomScenarioTest {
         browser.findElement(By.id("logout_sidebar_link")).click();
 
         String result = browser.findElement(By.cssSelector(".login_password")).getText();
-        System.out.println(result);
         assertEquals(result, "Password for all users:\n" + "secret_sauce");
 
         browser.quit();

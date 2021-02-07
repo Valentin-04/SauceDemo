@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage {
     public static final String ADD_TO_CART = "//*[text()='%s']/ancestor::*[contains(@class,'inventory_item')]//button";
+    public static final By NAME_CATALOG = By.cssSelector(".product_label");
+    public static final By MENU_BUTTON = By.cssSelector(".bm-burger-button");
+    public static final By LOGOUT_BUTTON = By.id("logout_sidebar_link");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -16,5 +19,17 @@ public class ProductsPage extends BasePage {
 
     public void openCart() {
         driver.findElement(By.id("shopping_cart_container")).click();
+    }
+
+    public String getProductsCatalog() {
+        return driver.findElement(NAME_CATALOG).getText();
+    }
+
+    public void openMenu() {
+        driver.findElement(MENU_BUTTON).click();
+    }
+
+    public void logOut() {
+        driver.findElement(LOGOUT_BUTTON).click();
     }
 }

@@ -3,14 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
-
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
     public static final By LOGIN_INPUT = By.id("user-name");
     public static final By PASSWORD_INPUT = By.id("password");
     public static final By LOGIN_BUTTON = By.id("login-button");
     public static final By ERROR_MESSAGE = By.cssSelector("[data-test=error]");
-    public static final By NAME_CATALOG = By.cssSelector(".product_label");
+    public static final By DATA_ON_THE_LOGIN_PAGE = By.cssSelector(".login_password");
+    public static final By ABOUT_PAGE_BUTTON = By.id("about_sidebar_link");
+    public static final By ABOUT_PAGE_DATA = By.cssSelector(".module-ticker .supertitle");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -30,7 +30,15 @@ public class LoginPage extends BasePage{
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 
-    public String getProductsCatalog() {
-        return driver.findElement(NAME_CATALOG).getText();
+    public String getDataFromTheLoginPage() {
+         return driver.findElement(DATA_ON_THE_LOGIN_PAGE).getText();
+    }
+
+    public void clickAboutPageButton() {
+        driver.findElement(ABOUT_PAGE_BUTTON).click();
+    }
+
+    public String getAboutPageConfirm() {
+        return driver.findElement(ABOUT_PAGE_DATA).getText();
     }
 }

@@ -1,7 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class ProductsPage extends BasePage {
     public static final String ADD_TO_CART = "//*[text()='%s']/ancestor::*[contains(@class,'inventory_item')]//button";
@@ -31,5 +36,21 @@ public class ProductsPage extends BasePage {
 
     public void logOut() {
         driver.findElement(LOGOUT_BUTTON).click();
+    }
+
+//    public void isPageOpened1() {
+//        try {
+//            driver.findElement(NAME_CATALOG);
+//        } catch (NoSuchElementException ex) {
+//            Assert.fail("Страница продуктов не загрузилась");
+//        }
+//    }
+
+    public void isProductPageOpened() {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(NAME_CATALOG));
+        } catch (TimeoutException ex){
+            Assert.fail("Страница продуктов не была загружена");
+        }
     }
 }

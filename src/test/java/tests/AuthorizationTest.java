@@ -10,6 +10,7 @@ public class AuthorizationTest extends BaseTest {
     public void authPathForAllUsers(String username) {
         loginPage.open();
         loginPage.login(username, "secret_sauce");
+        productsPage.isProductPageOpened();
         if (username.contains("locked")) {
             Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Sorry, this user has been locked out.", "The data is not correct");
         } else {
@@ -53,6 +54,7 @@ public class AuthorizationTest extends BaseTest {
     public void checkLogOut() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.isProductPageOpened();
         productsPage.openMenu();
         productsPage.logOut();
         assertEquals(loginPage.getDataFromTheLoginPage(), "Password for all users:\n" +

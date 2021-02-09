@@ -8,6 +8,7 @@ public class ProductsTest extends BaseTest {
     public void productsShouldBeIsAvailableInCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
+        productsPage.isProductPageOpened();
         productsPage.buyProduct("Sauce Labs Bike Light");
     }
 }

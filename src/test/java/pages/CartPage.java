@@ -1,8 +1,11 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -56,5 +59,13 @@ public class CartPage extends BasePage {
             result = result + Double.parseDouble(value.substring(1, value.length()));
         }
         return result;
+    }
+
+    public void isCartPageOpened() {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(CHECKOUT_BUTTON));
+        } catch (TimeoutException ex){
+            Assert.fail("Страница корзины не была загружена");
+        }
     }
 }

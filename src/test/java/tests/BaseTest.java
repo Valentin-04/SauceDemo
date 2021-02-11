@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
+import pages.CartPage;
 import pages.LoginPage;
 import pages.ProductsPage;
 
@@ -15,6 +16,7 @@ public class BaseTest {
     public WebDriver browser;
     public LoginPage loginPage;
     public ProductsPage productsPage;
+    public CartPage cartPage;
 
     @BeforeMethod
     public void setup() {
@@ -22,6 +24,7 @@ public class BaseTest {
         browser = new ChromeDriver();
         loginPage = new LoginPage(browser);
         productsPage = new ProductsPage(browser);
+        cartPage = new CartPage(browser);
         browser.manage().window().maximize();
         browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }

@@ -1,10 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -18,8 +16,9 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
-    public void buyProduct(String productName) {
+    public ProductsPage buyProduct(String productName) {
         driver.findElement(By.xpath(String.format(ADD_TO_CART, productName))).click();
+        return this;
     }
 
     public void openCart() {
@@ -49,7 +48,7 @@ public class ProductsPage extends BasePage {
     public void isProductPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(NAME_CATALOG));
-        } catch (TimeoutException ex){
+        } catch (TimeoutException ex) {
             Assert.fail("Страница продуктов не была загружена");
         }
     }

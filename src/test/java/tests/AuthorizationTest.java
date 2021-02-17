@@ -1,19 +1,30 @@
 package tests;
 
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class AuthorizationTest extends BaseTest {
 
+    @DataProvider(name = "Input for login")
+    public Object[][] inputForLogin() {
+        return new Object[][]{
+                {"standard_user", "123", "Epic sadface: Username and password do not match any user in this service"}
+//                {"standard_user", "secret_sauce", "Products"}
+        };
+    }
+
+
     public void authPathForAllUsers(String username) {
         loginPage.open();
         loginPage.login(username, "secret_sauce");
-        productsPage.isProductPageOpened();
+
         if (username.contains("locked")) {
             Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Sorry, this user has been locked out.", "The data is not correct");
         } else {
+            productsPage.isProductPageOpened();
             Assert.assertEquals(productsPage.getProductsCatalog(), "Products", "User doesn't authorization");
         }
     }
@@ -36,18 +47,17 @@ public class AuthorizationTest extends BaseTest {
         authPathForAllUsers(problemUser);
     }
 
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void checkAuthPerformanceUser() {
         String performanceUser = "performance_glitch_user";
         authPathForAllUsers(performanceUser);
     }
 
-    @Test
-    public void checkAuthRandomUser() {
+    @Test(dataProvider = "Input for login")
+    public void checkAuthRandomUser(String user, String pswrd, String error) {
         loginPage.open();
-        loginPage.login("123", "secret_sauce");
-        assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username and password do not " +
-                "match any user in this service", "Wrong test data");
+        loginPage.login(user, pswrd);
+        assertEquals(loginPage.getErrorMessage(), error, "Wrong test data");
     }
 
     @Test

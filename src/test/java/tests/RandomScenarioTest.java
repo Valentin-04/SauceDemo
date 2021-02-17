@@ -54,7 +54,6 @@ public class RandomScenarioTest extends BaseTest {
         productsPage.isProductPageOpened();
         productsPage.buyProduct("Sauce Labs Backpack");
         productsPage.openCart();
-        productsPage.isProductPageOpened();
         cartPage.clickCheckoutButton();
         cartPage.fillCheckoutForm("qwerty", "", "qwerty");
         assertEquals(loginPage.getErrorMessage(), "Error: Last Name is required",

@@ -1,11 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends BasePage {
+public class LoginPageFluent extends BasePage {
     public static final By LOGIN_INPUT = By.id("user-name");
     public static final By PASSWORD_INPUT = By.id("password");
     public static final By LOGIN_BUTTON = By.id("login-button");
@@ -14,19 +12,20 @@ public class LoginPage extends BasePage {
     public static final By ABOUT_PAGE_BUTTON = By.id("about_sidebar_link");
     public static final By ABOUT_PAGE_DATA = By.cssSelector(".module-ticker .supertitle");
 
-    public LoginPage(WebDriver driver) {
+    public LoginPageFluent(WebDriver driver) {
         super(driver);
     }
 
-    public void openMainPage() {
-        ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    public LoginPageFluent open() {
         driver.get("https://www.saucedemo.com/");
+        return this;
     }
 
-    public void login(String username, String password) {
+    public ProductsPage login(String username, String password) {
         driver.findElement(LOGIN_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        return new ProductsPage(driver);
     }
 
     public String getErrorMessage() {

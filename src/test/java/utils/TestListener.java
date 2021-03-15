@@ -1,4 +1,4 @@
-package tests;
+package utils;
 
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;

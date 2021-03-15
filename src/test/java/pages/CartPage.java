@@ -64,7 +64,7 @@ public class CartPage extends BasePage {
     public void isCartPageOpened() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(CHECKOUT_BUTTON));
-        } catch (TimeoutException ex){
+        } catch (TimeoutException ex) {
             Assert.fail("Страница корзины не была загружена");
         }
     }

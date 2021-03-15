@@ -53,7 +53,7 @@ public class TestListener implements ITestListener {
     //@Attachment(value = "Last screen state", type = "image/png")
     private byte[] takeScreenshot(ITestContext iTestContext) {
         try {
-            return ((TakesScreenshot) iTestContext.getAttribute("driver")).getScreenshotAs(OutputType.BYTES);
+            return ((TakesScreenshot) iTestContext.getAttribute("browser")).getScreenshotAs(OutputType.BYTES);
         } catch (NoSuchSessionException | IllegalStateException ex) {
             return null;
         }

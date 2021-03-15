@@ -11,6 +11,7 @@ public class ProductsPage extends BasePage {
     public static final By NAME_CATALOG = By.cssSelector(".product_label");
     public static final By MENU_BUTTON = By.cssSelector(".bm-burger-button");
     public static final By LOGOUT_BUTTON = By.id("logout_sidebar_link");
+    public static final By SORT_OF_PRODUCTS = By.className("product_sort_container");
 
     public ProductsPage(WebDriver driver) {
         super(driver);

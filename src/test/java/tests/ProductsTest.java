@@ -11,11 +11,9 @@ public class ProductsTest extends BaseTest {
                 .login("standard_user", "secret_sauce")
                 .buyProduct("Sauce Labs Bike Light")
                 .buyProduct("Sauce Labs Bolt T-Shirt");
-
-
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.isProductPageOpened();
-        productsPage.buyProduct("Sauce Labs Bike Light");
+//        loginPage.open();
+//        loginPage.login("standard_user", "secret_sauce");
+//        productsPage.isProductPageOpened();
+//        productsPage.buyProduct("Sauce Labs Bike Light");
     }
 }

@@ -1,5 +1,6 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
@@ -9,7 +10,6 @@ import org.testng.annotations.Listeners;
 import pages.CartPage;
 import pages.LoginPageFluent;
 import pages.ProductsPage;
-import utils.CapabilitiesGenerator;
 import utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
@@ -25,7 +25,8 @@ public class BaseTest {
     @BeforeMethod
     public void setup(ITestContext context) {
         //System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver");
-        browser = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
+        WebDriverManager.chromedriver().setup();
+        browser = new ChromeDriver();
         loginPage = new LoginPageFluent(browser);
         productsPage = new ProductsPage(browser);
         cartPage = new CartPage(browser);

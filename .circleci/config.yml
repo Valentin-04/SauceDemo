@@ -28,7 +28,7 @@
             command: google-chrome --version
         - run:
             name: Running tests
-            command: mvn clean install
+            command: mvn clean install -DtrimStackTrace=false
         - run:
             name: Generate allure report
             command: mvn allure:report

@@ -10,6 +10,7 @@ import org.testng.annotations.Listeners;
 import pages.CartPage;
 import pages.LoginPageFluent;
 import pages.ProductsPage;
+import utils.CapabilitiesGenerator;
 import utils.TestListener;
 
 import java.util.concurrent.TimeUnit;
@@ -26,7 +27,7 @@ public class BaseTest {
     public void setup(ITestContext context) {
         //System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver");
         WebDriverManager.chromedriver().setup();
-        browser = new ChromeDriver();
+        browser = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
         loginPage = new LoginPageFluent(browser);
         productsPage = new ProductsPage(browser);
         cartPage = new CartPage(browser);

@@ -46,7 +46,7 @@
     periodical:
       triggers:
         - schedule:
-            cron: "1 4,8,12 * * *"
+            cron: "0 14 1 * *"
             filters:
               branches:
                 only:

@@ -27,7 +27,7 @@ public class BaseTest {
     public void setup(ITestContext context) {
         //System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver");
         WebDriverManager.chromedriver().setup();
-        browser = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
+        browser = new ChromeDriver();//CapabilitiesGenerator.getChromeOptions()
         loginPage = new LoginPageFluent(browser);
         productsPage = new ProductsPage(browser);
         cartPage = new CartPage(browser);
